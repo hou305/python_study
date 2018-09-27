@@ -9,6 +9,7 @@ import logging
 from logging import handlers
 import time, datetime
 import os
+import hashlib
 
 class BasePerformer(object):
     """接口测试的所需要的底层方法"""
@@ -81,3 +82,8 @@ class BasePerformer(object):
         # logger.addHandler(fh)
         # logger.addHandler(ch)
 
+    def md5(self,text):
+        """将MD5方法封装"""
+        hl = hashlib.md5()
+        hl.update(text.encoding("utf-8"))
+        return hl.hexdigest()
