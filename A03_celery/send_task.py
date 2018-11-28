@@ -1,31 +1,22 @@
 # -*- encoding:utf-8 -*-
 import time
 from celery import Celery
-import celeryconfig
-celery = Celery('Tasks')
-celery.config_from_object('celeryconfig')
-# #
-# # real_celery = Celery('Tasks')
-# # real_celery.config_from_object('celeryconfig_other')
+app = Celery('task')
+app.config_from_object('celeryconfig_send')
 
-
-# brokers = "redis://localhost:6379/1"
-# backend = "redis://localhost:6379/2"
-# celery = Celery('send_task',broker =brokers,backend=backend)
-# @celery.task
-# def add(x, y):
-#     try:
-#         t = x + y
-#         real_celery.send_task('receive_task.get_values',args=[t], queue = 'custom')
-#         print "celery task ok"
-#
-#     except Exception,e:
-#         print e
-
-
-@celery.task
+receive_celery = Celery('task')
+receive_celery.config_from_object('celeryconfig_receive')
+#t同一个celery实例，不同队列
+#同一个celery实例，不同队列
+#不同实例，不同队列
+#不同实例，同一个队列
+@app.task
 def add(x, y):
     print "action"
-    time.sleep(60)
+    t = x+y
+    receive_celery.send_task('receive_task.get_values', args=[t], queue="for_receive")
+    """在add任务执行过程中，重新发一个任务到for_receive队列，给定一个该任务所需要的参数"""
     print "over"
-    return x+y
+    return t
+
+

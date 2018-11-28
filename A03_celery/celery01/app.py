@@ -3,9 +3,10 @@ from send_task import app
 
 if __name__ == '__main__':
     print "start task"
-    app.send_task('send_task.add', queue='for_add',args=[34,77])
-    # app.send_task('send_task.multipley, "for_add')
-    #给celery的指定队列(for_add)队列里面塞一个具体的add任务（任务会被执行的），任务所需的参数，如果不指定第一个参数的话，celery不知道放置什么任务进入队列？
+    app.send_task('send_task.add', queue='for_one',args=[56,311])
+    app.send_task('send_task.multiply',queue='for_two',args=[55,2])
+    #会自动创建队列的
+    #疑问：为什么for_add队列还是有该任务
     #任务生产者，将add任务发送至for_add队列，args是该任务执行所需的参数
     """
     参数解析:
@@ -13,5 +14,4 @@ if __name__ == '__main__':
     ②队列名称：给定该参数，会将任务放置在该队列中，当worker启动中，会自动检测到该队列有任务并执行；
     ③任务所需参数：该参数执行，执行的任务所需的参数，即：add方法是需要两个参数的，如果缺少时，在添加任务至队列时，代码不会报错，在执行时报错
     """
-
     print 'end task..'

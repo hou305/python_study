@@ -1,8 +1,7 @@
 # -*- encoding:utf-8 -*-
 from celery import Celery
-
-celery = Celery('task')
-celery.config_from_object('celeryconfig')
+celery = Celery('tasks')
+celery.config_from_object('celeryconfig_receive')
 
 @celery.task
 def get_values(data):
