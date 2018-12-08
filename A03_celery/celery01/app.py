@@ -5,8 +5,6 @@ if __name__ == '__main__':
     print "start task"
     app.send_task('send_task.add', queue='for_one',args=[56,311])
     app.send_task('send_task.multiply',queue='for_two',args=[55,2])
-    #会自动创建队列的
-    #疑问：为什么for_add队列还是有该任务
     #任务生产者，将add任务发送至for_add队列，args是该任务执行所需的参数
     """
     参数解析:

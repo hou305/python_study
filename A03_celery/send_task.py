@@ -6,6 +6,7 @@ app.config_from_object('celeryconfig_send')
 
 receive_celery = Celery('task')
 receive_celery.config_from_object('celeryconfig_receive')
+#test以下不同情况，是否合理
 #t同一个celery实例，不同队列
 #同一个celery实例，不同队列
 #不同实例，不同队列

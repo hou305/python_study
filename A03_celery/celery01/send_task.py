@@ -1,5 +1,4 @@
 # -*- encoding:utf-8 -*-
-import time
 from celery import Celery
 app = Celery('task')
 app.config_from_object('celeryconfig_send')

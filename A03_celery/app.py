@@ -4,8 +4,6 @@ from send_task import app
 if __name__ == '__main__':
     print "start task"
     app.send_task('send_task.add', queue='for_add',args=[34,77])
-    # app.send_task('send_task.multipley, "for_add')
-    #给celery的指定队列(for_add)队列里面塞一个具体的add任务（任务会被执行的），任务所需的参数，如果不指定第一个参数的话，celery不知道放置什么任务进入队列？
     #任务生产者，将add任务发送至for_add队列，args是该任务执行所需的参数
     """
     参数解析:
