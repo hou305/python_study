@@ -4,7 +4,7 @@ BROKER_URL = "redis://localhost:6379/1"
 CELERY_RESULT_BACKEND= "redis://localhost:6379/2"
 CELERY_TIMEZONE='Aisa/shanghai'
 
-CELERY_DEFULT_QUEUE = 'default' #request queue and custom queue
+CELERY_DEFULT_QUEUE = 'default'
 #创建任务队列
 CELERY_QUEUES = (
     Queue('default', routing_key='default'),#不指定这行代码会报错
@@ -22,5 +22,4 @@ CELERY_ROUTES = {
         "routing_key": "for_two"
     }
 }
-
 
