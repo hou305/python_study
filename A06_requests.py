@@ -20,43 +20,49 @@ class BasePerformer(object):
         reload(sys)
         super(BasePerformer, self).__init__()
 
-    def post(self, url, path, data):
+    @staticmethod
+    def post(url, path, data, files=None):
         """post请求方法"""
         try:
-            r = requests.post(url = url + path, data = data)
+            r = requests.post(url + path, data=data, files=files)
             return r.json()
         except Exception, e:
-            print "http请求异常%s"%r.status_code
+            print "http请求异常%s" % str(e)
             traceback.print_exc(file=sys.stdout)
 
-    def get(self, url, path, data):
+    @staticmethod
+    def get(url, path, data):
         """get请求方法"""
         try:
-            r = requests.get(url = url + path, data = data)
+            r = requests.get(url = url + path, data=data)
             return r.json()
         except Exception, e:
-            print "http请求异常:%s"%r.status_code
+            print "http请求异常%s" % str(e)
             traceback.print_exc(file=sys.stdout)
 
-    def put(self, url, path, data):
+    @staticmethod
+    def put(url, path, data):
         try:
-            res = requests.put(url = url + path, data = data)
+            r = requests.put(url = url + path, data=data)
             return r.json()
         except Exception, e:
-            print "http请求异常:%s"%r.status_code
+            print "http请求异常%s" % str(e)
             traceback.print_exc(file=sys.stdout)
 
+    @staticmethod
     def setup(self):
         pass
 
+    @staticmethod
     def teardown(self):
         pass
 
-    def logger(self, message):
+    @staticmethod
+    def logger(message):
         """打印日志"""
         logging.basicConfig(
             format="%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s",
-            filename ='./test.log',
+            filename='./test.log',
             level=logging.INFO,
             filemode='w')
         logging.info(message)
@@ -82,7 +88,7 @@ class BasePerformer(object):
         # logger.addHandler(fh)
         # logger.addHandler(ch)
 
-    def md5(self,text):
+    def md5(self, text):
         """将MD5方法封装"""
         hl = hashlib.md5()
         hl.update(text.encoding("utf-8"))

@@ -13,10 +13,11 @@ lambda argument_list: expression表示的是一个函数。这个函数叫做lam
 """
 
 #例1：在后端代码中看到过用lamnda用于连接两个redis
-redis_object = dict(r1 = lambda:redis.StrictRedis(host='127.0.0.1',port=6379,db=0),r2 = lambda:redis.StrictRedis(host=localhost,port=6379,db=1))
+redis_object = dict(r1=lambda:redis.StrictRedis(host='127.0.0.1', port=6379, db=0),\
+                    r2=lambda:redis.StrictRedis(host='127.0.0.1', port=6379, db=1))
 
 #方式1
-get_redis = lambda source :redis_object['source']()
+get_redis = lambda source:redis_object['source']()
 
 #方式二
 def get_redis(source):

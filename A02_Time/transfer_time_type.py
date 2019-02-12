@@ -6,11 +6,10 @@ from datetime import timedelta
 
 class TimeTransfer(object):
     """时间转化工具"""
-
     def str_to_dt(self, data):
         """字符串转化为datetime类型"""
         print "字符串转化为datetime"
-        print  type(datetime.datetime.strptime(data, "%Y-%m-%d %H:%M:%S"))
+        print type(datetime.datetime.strptime(data, "%Y-%m-%d %H:%M:%S"))
         return datetime.datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
 
     def dt_to_str(self, data):
