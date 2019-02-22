@@ -57,10 +57,6 @@ def generate_data():
         pda_upload_time = datetime.datetime.strftime(now,"%Y-%m-%d %H:%M:%S")
         op_time = datetime.datetime.strftime(now + datetime.timedelta(minutes=-20),"%Y-%m-%d %H:%M:%S")
         vehicle_plate_no = random.choice(["粤","赣","陕", "皖","黑","浙","沪"]) + random.choice(["A","B","C", "D","E","F","H"]) + str(random.randint(11111,99999))
-        fileds = [('waybillNo', 'cq_number'), ('orgCode', 'location_code'), ('opCode', 'op_code'),
-                  ('lineNo', 'line_no'),
-                  ('createTime', 'op_time'), ('uploadTime', 'pda_upload_time'), ('frequencyNo', 'line_frequency_no'),
-                  ('lineFrequencyNo', 'line_frequency_no'), ('vehiclePlateNo', 'vehicle_plate_no')]
         data = dict(waybillNo=cq_number, opCode=op_code, lineNo=line_no, uploadTime=pda_upload_time, createTime=op_time,
                     lineFrequencyNo=line_frequency_no, vehiclePlateNo=vehicle_plate_no, orgCode=location_code)
         redis_data = json.dumps(data)

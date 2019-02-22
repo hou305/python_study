@@ -62,9 +62,9 @@ class Performer(object):
         """读取表格测试数据"""
         try:
             workbook = xlrd.open_workbook(path, 'rb')
+            sheet = workbook.sheet_by_index(sheet)
         except Exception, e:
             print str(e)
-        sheet = workbook.sheet_by_index(sheet)
 
         data_list = []
         title = sheet.row_values(1)
@@ -86,6 +86,7 @@ class Performer(object):
                 data_values[title[j]] = row_value[j]
             data_list.append(data_values)
         return data_list
+
 
 if __name__ == '__main__':
     Performer().create_transport()
