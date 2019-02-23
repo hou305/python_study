@@ -14,10 +14,12 @@ def send_to_jg():
     # return result
     # print result['success'],result['retray_later']
     pass
+
+
 #这是我们自己的方法，调用这个方法，测试
 def send_to_jg_status(result):
     """根据推送结果success or fail，判断数据是否重推"""
-    if result["success"] is True and  result['retryLater'] =="null":
+    if result["success"] is True and result['retryLater'] == "null":
         return "send ok "
     elif result["success"] is False and result['retryLater'] is True:
         print (u"fail reason：%s" % result["errorMsg"])
