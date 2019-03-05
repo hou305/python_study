@@ -57,36 +57,6 @@ class BasePerformer(object):
     def teardown(self):
         pass
 
-    @staticmethod
-    def logger(message):
-        """打印日志"""
-        logging.basicConfig(
-            format="%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s",
-            filename='./test.log',
-            level=logging.INFO,
-            filemode='w')
-        logging.info(message)
-        # 上面的可以满足将日志写入文件，但是还想要在终端看到日志
-
-        # logger = logging.getLogger()
-        # logger.setLevel(logging.INFO)
-
-        # #写入文件的handler
-        # logfile = './log/log_test.log'
-        # fh = logging.FileHandler(logfile, mode='w')
-        # fh.setLevel(logging.INFO)
-
-        # #输出至终端的handler
-        # ch = logging.StreamHandler(sys.stdout)
-        # ch.setLevel(logging.INFO)
-
-        # #设置输出的格式
-        # formatter = logging.Formatter("%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s")
-        # fh.setFormatter(formatter)
-        # ch.setFormatter(formatter)
-
-        # logger.addHandler(fh)
-        # logger.addHandler(ch)
 
     def md5(self, text):
         """将MD5方法封装"""

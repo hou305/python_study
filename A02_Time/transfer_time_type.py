@@ -30,20 +30,6 @@ class TimeTransfer(object):
         """字符串转化为时间戳"""
         return self.dt_to_ts(self.str_to_dt(data))
 
-    # def select_transfer_type(self, source, result, data):
-    #     """转化方法切换选择"""
-    #     if source == 'str' and result == "dt":
-    #         return self.str_to_dt(data)
-    #     elif source == 'dt' and result == "str":
-    #         return self.dt_to_str(data)
-    #     elif source == 'dt' and result == "ts":
-    #         return self.dt_to_ts(data)
-    #     elif source == 'ts' and result == "dt":
-    #         return self.ts_to_dt(data)
-    #     elif source =="str" and result=="ts":
-    #         return self.str_to_ts(data)
-    #     else:
-    #         print "需要转化的类型错误"
 
 if  __name__=="__main__":
     data = "2018-12-07 21:40:35"
